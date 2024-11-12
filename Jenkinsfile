@@ -49,7 +49,7 @@ pipeline {
         
         stage('Build Image') {
             steps {
-                sh "docker buildx build . akhanal77/api"
+                sh "docker image build . -t akhanal77/api"
             }
         }
         stage('Publish Image') {
