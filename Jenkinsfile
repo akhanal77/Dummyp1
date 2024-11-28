@@ -1,20 +1,25 @@
 pipeline {
-    agent none
-    stages {
-        stage('Back-end') {
-            agent {
-                docker { image 'maven:3.9-eclipse-temurin-21-alpine' }
-            }
-            steps {
-                sh 'mvn --version'
-            }
+    agent {
+        docker {
+            image 'adoptopenjdk:8u282-b08-jre-hotspot'
         }
-        stage('Front-end') {
-            agent {
-                docker { image 'node:22.11.0-alpine3.20' }
-            }
+    }
+    triggers{
+        pollSCM('* * * *  *')
+    }
+    parameters { 
+        string(
+            name: 'DEPLOY_ENV', 
+            defaultValue: 'staging', 
+            description: 'This will be param') 
+    }
+    stages {
+        stage('Test Stage') {
+            environment {CLASS_NAME='DEVOPS'}
             steps {
-                sh 'node --version'
+                sh 'java -version'
+                sh 'echo $HOSTNAME'
+                sh 'echo $CLASS_NAME'
             }
         }
     }
