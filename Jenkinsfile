@@ -4,15 +4,15 @@ pipeline {
             image 'adoptopenjdk:8u282-b08-jre-hotspot'
         }
     }
-    triggers{
-        pollSCM('* * * *  *')
+    //triggers{
+      //  pollSCM('* * * *  *')
     }
-    parameters { 
-        string(
-            name: 'DEPLOY_ENV', 
-            defaultValue: 'staging', 
-            description: 'This will be param') 
-    }
+    //parameters { 
+      //  string(
+        //    name: 'DEPLOY_ENV', 
+          //  defaultValue: 'staging', 
+           // description: 'This will be param') 
+   // }
     stages {
         stage('Test Stage') {
             environment {CLASS_NAME='DEVOPS'}
