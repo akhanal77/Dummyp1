@@ -6,7 +6,7 @@ pipeline {
     }
     //triggers{
       //  pollSCM('* * * *  *')
-    }
+   // }
     //parameters { 
       //  string(
         //    name: 'DEPLOY_ENV', 
