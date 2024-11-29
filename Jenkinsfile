@@ -1,25 +1,11 @@
 pipeline {
     agent {
-        docker {
-            image 'adoptopenjdk:8u282-b08-jre-hotspot'
-        }
+        docker { image 'node:22.11.0-alpine3.20' }
     }
-    //triggers{
-      //  pollSCM('* * * *  *')
-   // }
-    //parameters { 
-      //  string(
-        //    name: 'DEPLOY_ENV', 
-          //  defaultValue: 'staging', 
-           // description: 'This will be param') 
-   // }
     stages {
-        stage('Test Stage') {
-            environment {CLASS_NAME='DEVOPS'}
+        stage('Test') {
             steps {
-                sh 'java -version'
-                sh 'echo $HOSTNAME'
-                sh 'echo $CLASS_NAME'
+                sh 'node --eval "console.log(process.platform,process.env.CI)"'
             }
         }
     }
