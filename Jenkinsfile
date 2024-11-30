@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo Hello World
+                echo 'Hello World'
                 //sh 'node --eval "console.log(process.platform,process.env.CI)"'
             }
         }
