@@ -1,12 +1,11 @@
 pipeline {
     agent {
-        docker { image 'hello-world' }
+        docker { image 'node:22.11.0-alpine3.20' }
     }
     stages {
         stage('Test') {
             steps {
-                echo 'Hello World'
-                //sh 'node --eval "console.log(process.platform,process.env.CI)"'
+                sh 'node --eval "console.log(process.platform,process.env.CI)"'
             }
         }
     }
